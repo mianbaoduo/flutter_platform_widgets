@@ -58,19 +58,20 @@ PlatformStyle _platformStyle(BuildContext context) {
     return platformStyle?.web ?? PlatformStyle.Material;
   }
 
-  switch (platform ?? Theme.of(context).platform) {
-    case TargetPlatform.android:
-      return platformStyle?.android ?? PlatformStyle.Material;
-    case TargetPlatform.fuchsia:
-      return platformStyle?.fuchsia ?? PlatformStyle.Material;
-    case TargetPlatform.iOS:
-      return platformStyle?.ios ?? PlatformStyle.Cupertino;
-    case TargetPlatform.linux:
-      return platformStyle?.linux ?? PlatformStyle.Material;
-    case TargetPlatform.macOS:
-      return platformStyle?.macos ?? PlatformStyle.Cupertino;
-    case TargetPlatform.windows:
-      return platformStyle?.windows ?? PlatformStyle.Material;
+  if (platform ?? Theme.of(context).platform case TargetPlatform.fuchsia) {
+    return platformStyle?.fuchsia ?? PlatformStyle.Material;
+  } else if (platform ?? Theme.of(context).platform case TargetPlatform.iOS) {
+    return platformStyle?.ios ?? PlatformStyle.Cupertino;
+  } else if (platform ?? Theme.of(context).platform case TargetPlatform.linux) {
+    return platformStyle?.linux ?? PlatformStyle.Material;
+  } else if (platform ?? Theme.of(context).platform case TargetPlatform.macOS) {
+    return platformStyle?.macos ?? PlatformStyle.Cupertino;
+  } else if (platform ?? Theme.of(context).platform case TargetPlatform.windows) {
+    return platformStyle?.windows ?? PlatformStyle.Material;
+  } else if (platform ?? Theme.of(context).platform case TargetPlatform.android) {
+    return platformStyle?.android ?? PlatformStyle.Material;
+  } else {
+    return platformStyle?.android ?? PlatformStyle.Material;
   }
 }
 
@@ -97,19 +98,20 @@ PlatformTarget platform(BuildContext context) {
     return PlatformTarget.web;
   }
 
-  switch (Theme.of(context).platform) {
-    case TargetPlatform.android:
-      return PlatformTarget.android;
-    case TargetPlatform.fuchsia:
-      return PlatformTarget.fuchsia;
-    case TargetPlatform.iOS:
-      return PlatformTarget.iOS;
-    case TargetPlatform.linux:
-      return PlatformTarget.linux;
-    case TargetPlatform.macOS:
-      return PlatformTarget.macOS;
-    case TargetPlatform.windows:
-      return PlatformTarget.windows;
+  if (Theme.of(context).platform case TargetPlatform.android) {
+    return PlatformTarget.android;
+  } else if (Theme.of(context).platform case TargetPlatform.fuchsia) {
+    return PlatformTarget.fuchsia;
+  } else if (Theme.of(context).platform case TargetPlatform.iOS) {
+    return PlatformTarget.iOS;
+  } else if (Theme.of(context).platform case TargetPlatform.linux) {
+    return PlatformTarget.linux;
+  } else if (Theme.of(context).platform case TargetPlatform.macOS) {
+    return PlatformTarget.macOS;
+  } else if (Theme.of(context).platform case TargetPlatform.windows) {
+    return PlatformTarget.windows;
+  } else {
+    return PlatformTarget.android;
   }
 }
 
